@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b0656e_0264d410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-02-23T22:04:02Z",
+      "side": 1,
+      "message": "Dead god man, just merge the tags don\u0027t cherry-pick and definitely don\u0027t push to gerrit.",
+      "revId": "a4fa899deb9249929023098e0d7debd2b35192d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
