@@ -17,11 +17,11 @@ export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/sdxpoorwillsauto.c
 endif
 ifeq ($(CONFIG_ARCH_SM6150), y)
 include $(srctree)/techpack/audio/config/sm6150auto.conf
-export
+export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/sm6150auto.conf)
 endif
 ifeq ($(CONFIG_ARCH_SDMMAGPIE), y)
 include $(srctree)/techpack/audio/config/sm6150auto.conf
-export
+export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/sm6150auto.conf)
 endif
 ifeq ($(CONFIG_ARCH_SM8150), y)
 include $(srctree)/techpack/audio/config/sm8150auto.conf
