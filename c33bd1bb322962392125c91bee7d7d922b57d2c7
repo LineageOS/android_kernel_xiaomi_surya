@@ -16,6 +16,23 @@
       "message": "Ok, will revert this pending more detailed testing. It seems that the feedbacks where aneddotical then. ",
       "revId": "c33bd1bb322962392125c91bee7d7d922b57d2c7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea72eac4_7ffdab44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 23615
+      },
+      "writtenOn": "2022-08-04T08:02:21Z",
+      "side": 1,
+      "message": "this is the correct fix and it\u0027s already been merged.\n\nhttps://github.com/LineageOS/android_kernel_xiaomi_surya/commit/715c959521237126a6ebc2384edeb3357693977d",
+      "revId": "c33bd1bb322962392125c91bee7d7d922b57d2c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
