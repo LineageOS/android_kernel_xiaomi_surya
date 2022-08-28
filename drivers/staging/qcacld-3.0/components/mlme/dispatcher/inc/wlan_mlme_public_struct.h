@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 The Linux Foundation. All rights reserved.
+ * Copyright (c) 2018-2020 The Linux Foundation. All rights reserved.
  *
  * Permission to use, copy, modify, and/or distribute this software for
  * any purpose with or without fee is hereby granted, provided that the
@@ -1859,7 +1859,6 @@ struct wlan_mlme_wmm_params {
  * @pcl_weightage: PCL weightage
  * @channel_congestion_weightage: channel congestion weightage
  * @oce_wan_weightage: OCE WAN metrics weightage
- * @sae_pk_ap_weightage: SAE-PK AP weigtage
  */
 struct  wlan_mlme_weight_config {
 	uint8_t rssi_weightage;
@@ -1873,7 +1872,6 @@ struct  wlan_mlme_weight_config {
 	uint8_t pcl_weightage;
 	uint8_t channel_congestion_weightage;
 	uint8_t oce_wan_weightage;
-	uint8_t sae_pk_ap_weightage;
 };
 
 /**
@@ -2188,7 +2186,6 @@ struct wlan_mlme_btm {
  */
 struct wlan_mlme_fe_wlm {
 	bool latency_enable;
-	bool latency_reset;
 	uint8_t latency_level;
 	uint32_t latency_flags[MLME_NUM_WLM_LATENCY_LEVEL];
 };
