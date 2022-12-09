@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd5c871_8744474d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-12-09T07:27:45Z",
+      "side": 1,
+      "message": "next time: please squash massive merges like this on Gerrit, then push them to HEAD un-squashed - no need to smash Gerrit with merges like this.",
+      "revId": "88e35efcf12c5b5c227741d134863ed75051c8bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
