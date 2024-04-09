@@ -1121,15 +1121,16 @@ static int16_t aw8624_haptic_effect_strength(struct aw8624 *aw8624)
 	VIB_DEBUG("aw8624->play.vmax_mv =0x%x", aw8624->play.vmax_mv);
 	switch (aw8624->play.vmax_mv) {
 	case AW8624_LIGHT_MAGNITUDE:
-		aw8624->level = 0x80;
+		aw8624->level = 0x30;
 		break;
 	case AW8624_MEDIUM_MAGNITUDE:
 		aw8624->level = 0x50;
 		break;
 	case AW8624_STRONG_MAGNITUDE:
-		aw8624->level = 0x30;
+		aw8624->level = 0x80;
 		break;
 	default:
+		aw8624->level = 0x80;
 		break;
 	}
 	VIB_DEBUG("aw8624->level =0x%x", aw8624->level);
@@ -1159,7 +1160,7 @@ static int aw8624_haptic_play_effect_seq(struct aw8624 *aw8624,
 		if (aw8624->activate_mode ==
 		    AW8624_HAPTIC_ACTIVATE_RAM_LOOP_MODE) {
 			aw8624_haptic_set_repeat_wav_seq(aw8624,
-							 (aw8624->info. effect_id_boundary +1));
+							 (aw8624->info.effect_id_boundary +1));
 			aw8624_haptic_play_repeat_seq(aw8624, true);
 		}
 	}
@@ -2215,18 +2216,18 @@ static void aw8624_vibrator_work_routine(struct work_struct *work)
 	aw8624_haptic_stop(aw8624);
 	if (aw8624->state) {
 		if (aw8624->activate_mode == AW8624_HAPTIC_ACTIVATE_RAM_MODE) {
-			aw8624_haptic_ram_vbat_comp(aw8624, false);
+			aw8624_haptic_ram_vbat_comp(aw8624, true);
 			aw8624_haptic_play_effect_seq(aw8624, true);
 		} else if (aw8624->activate_mode ==
 			   AW8624_HAPTIC_ACTIVATE_RAM_LOOP_MODE) {
-                        //pr_info("%s activate_mode=%d\n", __func__, aw8624->activate_mode);
-			aw8624->gain = 0x80;//Daniel 20200624 modify
+                        //pr_debug("%s activate_mode=%d\n", __func__, aw8624->activate_mode);
 			aw8624_haptic_ram_vbat_comp(aw8624, true);
 			aw8624_haptic_play_effect_seq(aw8624, true);
 			hrtimer_start(&aw8624->timer,
 				      ktime_set(aw8624->duration / 1000,
 						(aw8624->duration % 1000) *
 						1000000), HRTIMER_MODE_REL);
+			pm_stay_awake(aw8624->dev);
 		} else if (aw8624->activate_mode ==
 			   AW8624_HAPTIC_ACTIVATE_CONT_MODE) {
 			aw8624_haptic_cont(aw8624);
@@ -2237,6 +2238,8 @@ static void aw8624_vibrator_work_routine(struct work_struct *work)
 		} else {
 			/*other mode */
 		}
+	} else {
+	    pm_relax(aw8624->dev);
 	}
 	mutex_unlock(&aw8624->lock);
 }
@@ -2756,8 +2759,6 @@ static int aw8624_haptics_upload_effect(struct input_dev *dev,
 		aw8624->effect_id = data[0];
 		VIB_DEBUG("aw8624->effect_id =%d", aw8624->effect_id);
 		play->vmax_mv = effect->u.periodic.magnitude;	/*vmax level */
-		if (aw8624->info.gain_flag == 1)
-			play->vmax_mv = AW8624_LIGHT_MAGNITUDE;
 		VIB_DEBUG("aw8624->play.vmax_mv = 0x%x",
 			  aw8624->play.vmax_mv);
 
@@ -2812,6 +2813,9 @@ static int aw8624_haptics_playback(struct input_dev *dev, int effect_id,
 
 	VIB_FUNC_ENTER();
 	VIB_DEBUG("effect_id=%d , val = %d", effect_id, val);
+
+	aw8624->effect_id = effect_id;
+
 	VIB_DEBUG("aw8624->effect_id=%d , aw8624->activate_mode = %d",
 		  aw8624->effect_id, aw8624->activate_mode);
 
