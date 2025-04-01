@@ -34,6 +34,23 @@
       "parentUuid": "eae3de3b_7ab373ab",
       "revId": "068edb95794506f44242c83a0971c1e794828d07",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6195abf6_68d72068",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28837
+      },
+      "writtenOn": "2025-04-01T04:35:17Z",
+      "side": 1,
+      "message": "Seems reasonable to me. Anybody has anything against?",
+      "revId": "068edb95794506f44242c83a0971c1e794828d07",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
